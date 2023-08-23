@@ -1,0 +1,4 @@
+.env.EXAMPLE
+node_modules
+package-lock.json
+.gitignore
