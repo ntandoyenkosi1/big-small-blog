@@ -1,0 +1,3 @@
+-- Active: 1676290977393@@127.0.0.1@3306@blog
+DROP DATABASE big_small;
+CREATE DATABASE big_small;
