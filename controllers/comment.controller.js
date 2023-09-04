@@ -9,6 +9,13 @@ router.post("/", (req, res) => {
         res.status(401).json(err)
     })
 })
+router.put("/:id", (req, res) => {
+    Comment.update(req.body, {where:{id:req.params.id}}).then((data) => {
+        res.json(data)
+    }).catch((err) => {
+        res.status(401).json(err)
+    })
+})
 router.get("/:id", (req, res) => {
     Comment.findByPk(req.params.id)
         .then((data) => {
@@ -19,6 +26,15 @@ router.get("/:id", (req, res) => {
         })
 })
 router.get("/:id", (req, res) => {
+    Comment.findByPk(req.params.id)
+        .then((data) => {
+            res.json(data)
+        })
+        .catch((err) => {
+            res.status(400).json(err)
+        })
+})
+router.get("/", (req, res) => {
     Comment.findAll()
         .then((data) => {
             res.json(data)
@@ -27,7 +43,6 @@ router.get("/:id", (req, res) => {
             res.status(400).json(err)
         })
 })
-
 router.delete("/:id", (req, res) => {
     Comment.destroy(req.params.id)
         .then((data) => {

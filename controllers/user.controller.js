@@ -3,8 +3,8 @@ const router = require("express").Router()
 const bcrypt = require("bcrypt")
 // sign up
 router.post("/signup", (req, res) => {
-    const { name, email, password, image } = req.body
-    const salt = bcrypt.genSaltSync(saltRounds);
+    let { name, email, password, image } = req.body
+    const salt = bcrypt.genSaltSync(10);
     password = bcrypt.hashSync(password, salt)
     User.create({ name, email, password, email, image })
         .then((data) => {
@@ -26,8 +26,10 @@ router.post("/login", (req, res) => {
 })
 // change password
 router.put("/:id", (req, res) => {
-    const { password } = req.body
-    User.create({ name, email, password, email })
+    let { password } = req.body
+    const salt = bcrypt.genSaltSync(10);
+    password = bcrypt.hashSync(password, salt)
+    User.update({ password })
         .then((data) => {
             res.json(data)
         })
@@ -37,8 +39,16 @@ router.put("/:id", (req, res) => {
 })
 // get a user
 router.get("/:id", (req, res) => {
-    const { name, email, password, image } = req.body
-    User.create({ name, email, password, email })
+    User.findByPk(req.params.id)
+        .then((data) => {
+            res.json(data)
+        })
+        .catch((err) => {
+            res.status(400).json(err)
+        })
+})
+router.get("/", (req, res) => {
+    User.findAll()
         .then((data) => {
             res.json(data)
         })
