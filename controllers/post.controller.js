@@ -3,7 +3,7 @@ const router = require("express").Router()
 
 // create post
 router.post("/", (req, res) => {
-    Post.create(req.body).then((data) => {
+    Post.create({...req.body, likes:0}).then((data) => {
         res.json(data)
     }).catch((err) => {
         res.status(401).json(err)
@@ -15,6 +15,16 @@ router.put("/:id", (req, res) => {
     }).catch((err) => {
         res.status(401).json(err)
     })
+})
+router.put("/:id/like", async(req, res) => {
+    let existingPost = await Post.findOne({ where: { id: req.params.id } })
+    Post.update({ likes: existingPost.likes + 1 }, { where: { id: req.params.id } })
+        .then((data) => {
+            res.json(data)
+        })
+        .catch((err) => {
+            res.status(401).json(err)
+        })
 })
 router.get("/:id", (req, res) => {
     Post.findByPk(req.params.id)
