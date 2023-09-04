@@ -1,17 +1,24 @@
-const { Comment } = require("../models")
+const { Post, Comment } = require("../../models")
 const router = require("express").Router()
 
-// create Comment
+// create post
 router.post("/", (req, res) => {
-    Comment.create({...req.body, likes:0}).then((data) => {
+    Post.create({...req.body, likes:0}).then((data) => {
+        res.json(data)
+    }).catch((err) => {
+        res.status(401).json(err)
+    })
+})
+router.put("/:id", (req, res) => {
+    Post.update(req.body, {where:{id:req.params.id}}).then((data) => {
         res.json(data)
     }).catch((err) => {
         res.status(401).json(err)
     })
 })
 router.put("/:id/like", async(req, res) => {
-    let existingComment = await Comment.findOne({ where: { id: req.params.id } })
-    Comment.update({ likes: existingComment.likes + 1 }, { where: { id: req.params.id } })
+    let existingPost = await Post.findOne({ where: { id: req.params.id } })
+    Post.update({ likes: existingPost.likes + 1 }, { where: { id: req.params.id } })
         .then((data) => {
             res.json(data)
         })
@@ -19,15 +26,8 @@ router.put("/:id/like", async(req, res) => {
             res.status(401).json(err)
         })
 })
-router.put("/:id", (req, res) => {
-    Comment.update(req.body, { where: { id: req.params.id } }).then((data) => {
-        res.json(data)
-    }).catch((err) => {
-        res.status(401).json(err)
-    })
-})
 router.get("/:id", (req, res) => {
-    Comment.findByPk(req.params.id)
+    Post.findByPk(req.params.id)
         .then((data) => {
             res.json(data)
         })
@@ -36,7 +36,7 @@ router.get("/:id", (req, res) => {
         })
 })
 router.get("/:id", (req, res) => {
-    Comment.findByPk(req.params.id)
+    Post.findByPk(req.params.id)
         .then((data) => {
             res.json(data)
         })
@@ -45,7 +45,7 @@ router.get("/:id", (req, res) => {
         })
 })
 router.get("/", (req, res) => {
-    Comment.findAll()
+    Post.findAll({include:[{model:Comment}]})
         .then((data) => {
             res.json(data)
         })
@@ -54,7 +54,7 @@ router.get("/", (req, res) => {
         })
 })
 router.delete("/:id", (req, res) => {
-    Comment.destroy(req.params.id)
+    Post.destroy(req.params.id)
         .then((data) => {
             res.json(data)
         })
