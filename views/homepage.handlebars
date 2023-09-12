@@ -1,12 +1,14 @@
 <div>
     {{#each posts}}
+    <div>
         <a href="/posts/{{id}}">
-            <span >{{title}}</span>
+            <span>{{title}}</span>
             <span>{{likes}}</span>
             <span>{{createdAt}}</span>
-            <button id={{id}}>Like</button>
-            <button class="view" id={{id}}>View</button>
         </a>
+        <button id={{id}}>Like</button>
+        <input data-id={{id}} type="button" value="View" class="view" />
+    </div>
     {{/each}}
 </div>
 
