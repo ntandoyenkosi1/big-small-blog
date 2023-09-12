@@ -1,0 +1,20 @@
+<div id={{post.id}}>
+    <span>{{post.title}}</span>
+    <span>{{post.likes}}</span>
+    <span>{{post.createdAt}}</span>
+    <button id={{post.id}}>Like</button>
+    <button class="view" id={{id}}>View</button>
+</div>
+<h1>Comments</h1>
+{{#each post.Comments}}
+
+<div>
+    <span>{{content}}</span>
+    <span>{{likes}} &nbsp; likes</span>
+    <span>{{createdAt}}</span>
+    <button id={{id}}>Like</button>
+</div>
+{{/each}}
+<input type="text" placeholder="Add comment"/>
+<button id="submit" data-id={{post.id}}>Submit</button>
+<script src="/js/post.js"></script>

@@ -27,7 +27,7 @@ router.put("/:id/like", async(req, res) => {
         })
 })
 router.get("/:id", (req, res) => {
-    Post.findByPk(req.params.id)
+    Post.findByPk(req.params.id, {include:[{model:Comment}]})
         .then((data) => {
             res.json(data)
         })

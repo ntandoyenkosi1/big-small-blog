@@ -1,8 +1,13 @@
 <div>
     {{#each posts}}
-        <div>
+        <a href="/posts/{{id}}">
             <span >{{title}}</span>
             <span>{{likes}}</span>
-        </div>
+            <span>{{createdAt}}</span>
+            <button id={{id}}>Like</button>
+            <button class="view" id={{id}}>View</button>
+        </a>
     {{/each}}
 </div>
+
+<script src="/js/homepage.js"></script>
