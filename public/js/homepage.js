@@ -13,7 +13,7 @@ function handleLike(event) {
         .catch(error => console.log('error', error));
 }
 function handleRedirect(event) {
-    let id = document.querySelector("input[type=button]").dataset.id
+    let id = event.target.dataset.id
     //fetch for redirecting to the post page
     document.location.replace(`/posts/${id}`)
 }

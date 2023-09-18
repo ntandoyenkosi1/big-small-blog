@@ -12,6 +12,12 @@ router.get("/posts/:id", async (req, res) => {
     post = post.get({ plain: true })
     res.render("post", { post })
 })
+router.get("/posts/edit/:id", (req,res)=>{
+    res.render("edit")
+})
+router.get("/posts/delete/:id", (req,res)=>{
+    res.render("delete")
+})
 router.get("/dashboard", async (req, res) => {
     let posts = await Post.findAll({ include: { model: Comment } })
     posts = posts.map(x => x.get({ plain: true }))

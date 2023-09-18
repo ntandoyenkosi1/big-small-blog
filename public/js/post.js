@@ -1,3 +1,17 @@
+document.querySelector("button").addEventListener("click",(event)=> {
+    let id = event.target.id
+    //fetch for liking a comment using the id
+    var requestOptions = {
+        method: 'PUT'
+    };
+
+    fetch(`http://localhost:3001/api/posts/${id}/like`, requestOptions)
+        .then(response => response.json())
+        .then(result => {
+            document.location.reload()
+        })
+        .catch(error => console.log('error', error));
+})
 document.querySelector("#submit").addEventListener("click", function (e) {
     const comment = document.querySelector("input[type=text]").value
     console.log(comment)
