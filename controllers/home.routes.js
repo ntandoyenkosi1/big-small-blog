@@ -7,17 +7,23 @@ router.get("/", async (req, res) => {
     posts = posts.map(x => x.get({ plain: true }))
     res.render("homepage", { posts })
 })
+router.get("/posts/create", (req,res)=>{
+    res.render("create")
+})
 router.get("/posts/:id", async (req, res) => {
     let post = await Post.findByPk(req.params.id,{ include: { model: Comment } })
     post = post.get({ plain: true })
     res.render("post", { post })
 })
-router.get("/posts/edit/:id", (req,res)=>{
-    res.render("edit")
+router.get("/posts/edit/:id", async(req,res)=>{
+    let post = await Post.findByPk(req.params.id)
+    post = post.get({ plain: true })
+    res.render("edit", {post})
 })
 router.get("/posts/delete/:id", (req,res)=>{
     res.render("delete")
 })
+
 router.get("/dashboard", async (req, res) => {
     let posts = await Post.findAll({ include: { model: Comment } })
     posts = posts.map(x => x.get({ plain: true }))
