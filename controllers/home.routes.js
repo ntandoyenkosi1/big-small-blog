@@ -27,6 +27,7 @@ router.get("/posts/delete/:id", (req,res)=>{
 router.get("/dashboard", async (req, res) => {
     let posts = await Post.findAll({ include: { model: Comment } })
     posts = posts.map(x => x.get({ plain: true }))
+    console.log(req.session)
     res.render("dashboard", { posts })
 })
 router.get("/login", async (req, res) => {
