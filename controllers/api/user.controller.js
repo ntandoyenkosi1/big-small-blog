@@ -17,8 +17,9 @@ router.post("/signup", (req, res) => {
 // log in
 router.post("/login", (req, res) => {
     const { email, password } = req.body
-    User.findOne({ email: email }).then((data) => {
-        bcrypt.compareSync(password, data.password) ? res.json(data) : res.status(400).json("Incorrect password")
+    User.findOne({where:{ email: email }}).then((data) => {
+        console.log(data.email)
+        bcrypt.compareSync(password, data.password) ? res.json(data) : res.status(400).json({error:"Incorrect password"})
     }).catch((err) => {
         res.status(401).json(err)
     })
