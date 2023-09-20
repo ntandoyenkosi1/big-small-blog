@@ -9,14 +9,14 @@ User.init(
         email: {
             type: DataTypes.STRING, validate: {
                 is: ['.+@.+', 'i']
-            }
+            }, unique: true
         },
         image: DataTypes.STRING,
         password: DataTypes.STRING
     },
     {
         sequelize,
-        freezeTableName:true,underscored:true
+        freezeTableName: true, underscored: true
     }
 );
 

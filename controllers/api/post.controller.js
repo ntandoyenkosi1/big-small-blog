@@ -3,7 +3,7 @@ const router = require("express").Router()
 
 // create post
 router.post("/", (req, res) => {
-    Post.create({...req.body, likes:0}).then((data) => {
+    Post.create({...req.body, likes:0, "UserId":req.session?.user?.id}).then((data) => {
         res.json(data)
     }).catch((err) => {
         res.status(401).json(err)

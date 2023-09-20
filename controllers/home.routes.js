@@ -13,6 +13,7 @@ router.get("/posts/create", (req,res)=>{
 router.get("/posts/:id", async (req, res) => {
     let post = await Post.findByPk(req.params.id,{ include: { model: Comment } })
     post = post.get({ plain: true })
+    console.log(post)
     res.render("post", { post })
 })
 router.get("/posts/edit/:id", async(req,res)=>{
@@ -25,9 +26,9 @@ router.get("/posts/delete/:id", (req,res)=>{
 })
 
 router.get("/dashboard", async (req, res) => {
-    let posts = await Post.findAll({ include: { model: Comment } })
+    if(!req.session.user) return res.redirect("/login")
+    let posts = await Post.findAll({where:{UserId:req.session.user.id}},{ include: { model: Comment } })
     posts = posts.map(x => x.get({ plain: true }))
-    console.log(req.session)
     res.render("dashboard", { posts })
 })
 router.get("/login", async (req, res) => {
@@ -35,5 +36,10 @@ router.get("/login", async (req, res) => {
 })
 router.get("/register", async (req, res) => {
     res.render("signup")
+})
+router.get("/logout", async (req, res) => {
+    req.session.destroy(()=>{
+        res.redirect("/")
+    })
 })
 module.exports = router
