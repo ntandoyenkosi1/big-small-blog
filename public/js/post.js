@@ -20,8 +20,7 @@ document.querySelector("#submit").addEventListener("click", function (e) {
 
     var raw = JSON.stringify({
         "content": comment,
-        "PostId": e.target.dataset.id,
-        "UserId": 1
+        "PostId": e.target.dataset.id
     });
     var requestOptions = {
         method: 'POST',

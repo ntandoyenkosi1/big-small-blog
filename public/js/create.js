@@ -6,8 +6,7 @@ document.querySelector("button").addEventListener("click", function () {
 
     var raw = JSON.stringify({
         "title": title,
-        "content": content,
-        "UserId": 1
+        "content": content
     });
 
     var requestOptions = {
