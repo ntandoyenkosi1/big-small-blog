@@ -3,7 +3,7 @@ const router = require("express").Router()
 
 // create Comment
 router.post("/", (req, res) => {
-    Comment.create({...req.body, likes:0}).then((data) => {
+    Comment.create({...req.body, likes:0, UserId:req.session?.user?.id}).then((data) => {
         res.json(data)
     }).catch((err) => {
         res.status(401).json(err)

@@ -7,6 +7,9 @@ Comment.belongsTo(Post,{foreignKey:"PostId"})
 
 User.hasMany(Post)
 Post.belongsTo(User, {foreignKey:"UserId"})
+
+User.hasMany(Comment)
+Comment.belongsTo(User, {foreignKey:"UserId"})
 module.exports={
     Comment,User,Post
 }
