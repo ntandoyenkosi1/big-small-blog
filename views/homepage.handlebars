@@ -1,15 +1,19 @@
-<div>
-    {{#each posts}}
-    <div>
-        <a href="/posts/{{id}}">
-            <span>{{title}}</span>
-            <span>{{likes}}</span>
-            <span>{{createdAt}}</span>
-        </a>
-        <button id={{id}}>Like</button>
-        <input data-id={{id}} type="button" value="View" class="view" />
-    </div>
-    {{/each}}
+<div class="home-list">
+    <ul>
+        {{#each posts}}
+        <li>
+            <div>
+                <a href="/posts/{{id}}">
+                    <h2>{{title}}</h2>
+                    <span>{{likes}} likes</span>
+                    <span>Posted on: {{format_date createdAt}}</span> <span>by {{User.name}}</span>
+                </a>
+                <button id={{id}}>Like</button>
+                <input data-id={{id}} type="button" value="View" class="view" />
+            </div>
+        </li>
+        {{/each}}
+    </ul>
 </div>
 
 <script src="/js/homepage.js"></script>

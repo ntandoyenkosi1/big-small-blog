@@ -1,10 +1,11 @@
-const { Post, Comment } = require("../models")
+const { Post, Comment, User } = require("../models")
 const auth = require("../middleware/auth")
 const router = require("express").Router()
 
 router.get("/", async (req, res) => {
-    let posts = await Post.findAll({ include: { model: Comment } })
+    let posts = await Post.findAll({ include: [{ model: Comment },{model:User}] })
     posts = posts.map(x => x.get({ plain: true }))
+    console.log(posts)
     res.render("homepage", { posts, loggedIn: req.session.loggedIn })
 })
 router.get("/posts/create", (req, res) => {
