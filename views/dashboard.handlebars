@@ -1,15 +1,23 @@
-<h1>Dashboard</h1>
-<a href="/posts/create">Create New Post</a>
-<div>
-    {{#each posts}}
-        <div>
-            <span >{{title}}</span>
-            <span>{{likes}}</span>
-            <span>{{createdAt}}</span>
-            <button data-id={{id}} id="edit">Edit</button>
-            <button data-id={{id}} id="delete">Delete</button>
-        </div>
-    {{/each}}
+<div class="dashboard-title">
+    <h1>Your Posts</h1>
+    <a href="/posts/create">Create New Post</a>
 </div>
-
+<div class="dashboard-list">
+    <ul>
+        {{#each posts}}
+        <li>
+            <div>
+                <a href="/posts/{{id}}">
+                    <h2>{{title}}</h2>
+                    <span>{{likes}} likes</span>
+                    <span class="post-details">Posted on: {{format_date createdAt}} by {{User.name}}</span>
+                </a>
+                <input data-id={{id}} type="button" value="View" class="view" />
+                <button data-id={{id}} id="edit">Edit</button>
+                <button data-id={{id}} id="delete">Delete</button>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+</div>
 <script src="/js/dashboard.js"></script>

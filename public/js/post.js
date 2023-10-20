@@ -14,7 +14,6 @@ document.querySelector("button").addEventListener("click",(event)=> {
 })
 document.querySelector("#submit").addEventListener("click", function (e) {
     const comment = document.querySelector("input[type=text]").value
-    console.log(comment)
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 

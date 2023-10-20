@@ -6,7 +6,7 @@
                 <a href="/posts/{{id}}">
                     <h2>{{title}}</h2>
                     <span>{{likes}} likes</span>
-                    <span>Posted on: {{format_date createdAt}}</span> <span>by {{User.name}}</span>
+                    <span class="post-details">Posted on: {{format_date createdAt}} by {{User.name}}</span>
                 </a>
                 <button id={{id}}>Like</button>
                 <input data-id={{id}} type="button" value="View" class="view" />
