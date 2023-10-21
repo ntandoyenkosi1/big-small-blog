@@ -6,7 +6,11 @@
     <span class="post-details">Posted on: {{format_date post.createdAt}} by {{post.User.name}}</span>
     <button id={{post.id}}>Like</button>
 </div>
+{{#if post.Comments}}
 <h1>Comments</h1>
+{{else}}
+<label>There are no comments on this post yet</label>
+{{/if}}
 {{#each post.Comments}}
 
 <div class="post">
@@ -19,7 +23,7 @@
                     d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
             </svg>
         </span>
-        <span>{{post.User.name}} tet</span>
+        <span>{{User.name}}</span>
     </div>
     <div class="content">
         <span>{{content}}</span>
@@ -30,12 +34,22 @@
         <span>{{likes}} &nbsp;</span>
         <button id={{id}}>Like</button>
     </div>
-
-
 </div>
 {{/each}}
 {{#if loggedIn}}
-<input type="text" placeholder="Add comment" />
-<input id="submit" data-id={{post.id}} value="Submit" type="button" />
+<h2>Comment on this post</h2>
+<form>
+    <div>
+        <div>
+            <label>
+                Comment
+            </label>
+            <input type="text" placeholder="Add comment" />
+        </div>
+    </div>
+    <div>
+        <input id="submit" data-id={{post.id}} value="Submit" type="button" />
+    </div>
+</form>
 {{/if}}
 <script src="/js/post.js"></script>

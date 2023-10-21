@@ -12,7 +12,7 @@ document.querySelector("button").addEventListener("click",(event)=> {
         })
         .catch(error => console.log('error', error));
 })
-document.querySelector("#submit").addEventListener("click", function (e) {
+document.querySelector("#submit")?.addEventListener("click", function (e) {
     const comment = document.querySelector("input[type=text]").value
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");

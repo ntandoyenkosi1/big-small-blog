@@ -69,6 +69,7 @@ button:hover, input[type=button]:hover, input[type=submit]:hover{
 h2 {
     font-size: 2.1pc;
     text-decoration: none;
+    text-align: center;
 }
 
 li div a {
@@ -110,6 +111,7 @@ span {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 10vw;
 }
 .post{
     display: flex;
@@ -117,7 +119,7 @@ span {
 }
 .content{
     box-shadow: 18px 20px 18px 1px #dfede7;
-    min-width: 70vw;
+    width: 70vw;
     margin:20px;
     background-color: whitesmoke;
 }
@@ -140,7 +142,9 @@ input[type=submit]{
     padding: 20px 0 40px 0;
     background-color: whitesmoke;
 }
-
+.like{
+    width: 10vw;
+}
 .login p, label, .signup p{
     color: #c1bdbd;
 }
