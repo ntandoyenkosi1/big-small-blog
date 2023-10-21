@@ -43,7 +43,7 @@ ul {
 .home-list>ul>li:hover, .dashboard-list>ul>li:hover {
     background-color: #f5f6f8;
 }
-.home-list ul, .dashboard-list ul, .dashboard-title, .single-post {
+.home-list ul, .dashboard-list ul, .dashboard-title {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -52,6 +52,11 @@ ul {
 
 .home-list, .dashboard-list {
     background-color: #e6ece7;
+}
+
+.post-container{
+    display: flex;
+    justify-content: center;
 }
 
 button,
