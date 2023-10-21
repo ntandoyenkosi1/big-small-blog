@@ -55,14 +55,14 @@ ul {
 }
 
 button,
-input[type=button] {
+input[type=button], input[type=submit] {
     padding: 20px;
     background-color: var(--bg-main);
     border-radius: 4pc;
     cursor: pointer;
     color: #623e3e;
 }
-button:hover, input[type=button]:hover{
+button:hover, input[type=button]:hover, input[type=submit]:hover{
     background-color: var(--bg-foreground);
 }
 
@@ -124,3 +124,41 @@ span {
 .content:hover{
     box-shadow: 18px 20px 18px 1px #e1e1e1;
 }
+
+form input{
+    width: 40vw;
+    height: 5vh;
+    border-radius: 10px;
+}
+input[type=submit]{
+    height: 7vh;
+}
+.login, .signup{
+    box-shadow: 18px 20px 18px 1px #dfede7;
+    margin: 150px;
+    text-align: center;
+    padding: 20px 0 40px 0;
+    background-color: whitesmoke;
+}
+
+.login p, label, .signup p{
+    color: #c1bdbd;
+}
+form > div{
+    margin-top: 10px;
+}
+
+form div{
+    display: flex;
+    justify-content: center;
+}
+
+form div div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+::placeholder {
+    color: #c1bdbd;
+    opacity: 1; /* Firefox */
+  }
