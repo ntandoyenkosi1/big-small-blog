@@ -14,6 +14,7 @@ router.get("/posts/:id", async (req, res) => {
     
     let post = await Post.findByPk(req.params.id, { include: [{ model: Comment, include:User }, {model:User}] })
     post = post.get({ plain: true })
+    post.Comments?.map((x=>x.loggedIn=req.session.loggedIn))
     res.render("post", { post, loggedIn: req.session.loggedIn })
 })
 router.get("/posts/edit/:id", auth, async (req, res) => {

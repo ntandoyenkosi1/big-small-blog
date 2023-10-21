@@ -8,7 +8,9 @@
                     <span>{{likes}} likes</span>
                     <span class="post-details">Posted on: {{format_date createdAt}} by {{User.name}}</span>
                 </a>
+                {{#if loggedIn}}
                 <button id={{id}}>Like</button>
+                {{/if}}
                 <input data-id={{id}} type="button" value="View" class="view" />
             </div>
         </li>

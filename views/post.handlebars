@@ -20,14 +20,11 @@
 
     <div class="like">
         <span>{{post.likes}} &nbsp;</span>
+        {{#if loggedIn}}
         <button id={{post.id}}>Like</button>
+        {{/if}}
     </div>
 </div>
-    {{!-- <h2>{{post.title}}</h2>
-    <span>{{post.likes}} likes</span>
-    <span>{{post.content}}</span>
-    <span class="post-details">Posted on: {{format_date post.createdAt}} by {{post.User.name}}</span>
-    <button id={{post.id}}>Like</button> --}}
 </div>
 </div>
 
@@ -61,7 +58,9 @@
 
     <div class="like">
         <span>{{likes}} &nbsp;</span>
+        {{#if loggedIn}}
         <button id={{id}}>Like</button>
+        {{/if}}
     </div>
 </div>
 {{/each}}
