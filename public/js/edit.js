@@ -1,13 +1,13 @@
-document.querySelector("button").addEventListener("click", function (e) {
-    let title = document.querySelector("input[placeholder=title]").value
-    let content = document.querySelector("input[placeholder=content]").value
-    let id=e.target.id
+document.querySelector("input[type=submit]").addEventListener("click", function (e) {
+    let title = document.querySelector("#title").value
+    let content = document.querySelector("#content").value
+    let id = e.target.id
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify({
-        "title": title,
-        "content": content
+        title,
+        content
     });
 
     var requestOptions = {

@@ -11,7 +11,8 @@ router.get("/posts/create", (req, res) => {
     res.render("create", { loggedIn: req.session.loggedIn })
 })
 router.get("/posts/:id", async (req, res) => {
-    let post = await Post.findByPk(req.params.id, { include: { model: Comment, include:User } })
+    
+    let post = await Post.findByPk(req.params.id, { include: [{ model: Comment, include:User }, {model:User}] })
     post = post.get({ plain: true })
     res.render("post", { post, loggedIn: req.session.loggedIn })
 })

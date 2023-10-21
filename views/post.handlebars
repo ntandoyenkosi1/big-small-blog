@@ -2,6 +2,7 @@
 
     <h2>{{post.title}}</h2>
     <span>{{post.likes}} likes</span>
+    <span>{{post.content}}</span>
     <span class="post-details">Posted on: {{format_date post.createdAt}} by {{post.User.name}}</span>
     <button id={{post.id}}>Like</button>
 </div>

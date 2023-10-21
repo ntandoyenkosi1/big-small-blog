@@ -133,7 +133,7 @@ form input{
 input[type=submit]{
     height: 7vh;
 }
-.login, .signup{
+.login, .signup, .create-post{
     box-shadow: 18px 20px 18px 1px #dfede7;
     margin: 150px;
     text-align: center;

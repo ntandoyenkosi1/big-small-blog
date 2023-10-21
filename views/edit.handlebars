@@ -1,7 +1,23 @@
-<h1>Create</h1>
-
-<input type="text" value="{{post.title}}" placeholder="title" />
-<input type="text" value="{{post.content}}" placeholder="content" />
-<button id="{{post.id}}">Save</button>
-
+<div class="edit-post">
+    <div>
+        <h1>Edit Post</h1>
+    </div>
+    <form>
+        <div>
+            <div>
+                <label>Post title</label>
+                <input type="text" id="title" value="{{post.title}}" />
+            </div>
+        </div>
+        <div>
+            <div>
+                <label>Post content</label>
+                <input type="text" id="content" value="{{post.content}}" />
+            </div>
+        </div>
+        <div>
+            <input id="{{post.id}}" type="submit" value="Save" />
+        </div>
+    </form>
+</div>
 <script src="/js/edit.js"></script>
