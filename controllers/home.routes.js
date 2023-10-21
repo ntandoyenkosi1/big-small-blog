@@ -5,6 +5,11 @@ const router = require("express").Router()
 router.get("/", async (req, res) => {
     let posts = await Post.findAll({ include: [{ model: Comment },{model:User}] })
     posts = posts.map(x => x.get({ plain: true }))
+    posts?.map((x=>{
+        x.loggedIn=req.session.loggedIn
+        x.commentsCount=x.Comments.length
+        return x
+    }))
     res.render("homepage", { posts, loggedIn: req.session.loggedIn })
 })
 router.get("/posts/create", (req, res) => {
