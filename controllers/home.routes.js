@@ -2,7 +2,10 @@ const { Post, Comment, User } = require("../models")
 const auth = require("../middleware/auth")
 const router = require("express").Router()
 
-router.get("/", async (req, res) => {
+router.get("/", async(req,res)=>{
+    res.render("homepage")
+})
+router.get("/posts", async (req, res) => {
     let posts = await Post.findAll({ include: [{ model: Comment },{model:User}] })
     posts = posts.map(x => x.get({ plain: true }))
     posts?.map((x=>{
@@ -10,7 +13,7 @@ router.get("/", async (req, res) => {
         x.commentsCount=x.Comments.length
         return x
     }))
-    res.render("homepage", { posts, loggedIn: req.session.loggedIn })
+    res.render("posts", { posts, loggedIn: req.session.loggedIn })
 })
 router.get("/posts/create", (req, res) => {
     res.render("create", { loggedIn: req.session.loggedIn })

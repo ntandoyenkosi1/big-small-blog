@@ -6,35 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Big Small</title>
     <link href="/css/index.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap" rel="stylesheet">
+    <meta name="description" content="Stay updated with the latest tech trends and innovations">
 </head>
 
 <body>
     <div>
-    <div class="main">
-        <a><img alt="" src="/img/logo.png" width="150px" /></a>
-        <ul class="main-list">
-            <li>
-                <a href="/">Home</a>
-            </li>
-            {{#if loggedIn}}
-            <li>
-                <a href="/dashboard">Dashboard</a>
-            </li>
-            <li>
-                <a href="/logout">Logout</a>
-            </li>
-            {{else}}
-            <li>
-                <a href="/login">Login</a>
-            </li>
-            <li>
-                <a href="/register">Sign Up</a>
-            </li>
-            {{/if}}
+        <div class="main">
+            <a><img alt="" src="/img/logo.png" width="150px" /></a>
+            <ul class="main-list">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                {{#if loggedIn}}
+                <li>
+                    <a href="/dashboard">Dashboard</a>
+                </li>
+                <li>
+                    <a href="/logout">Logout</a>
+                </li>
+                {{else}}
+                <li>
+                    <a href="/login">Login</a>
+                </li>
+                <li>
+                    <a href="/register">Sign Up</a>
+                </li>
+                {{/if}}
 
-        </ul>
-    </div>
-    {{{body}}}
+            </ul>
+        </div>
+        {{{body}}}
     </div>
     <footer>
         <div>
