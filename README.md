@@ -32,7 +32,7 @@ Here are a few screenshots to give you a visual preview of the Big Small Tech Bl
 
 ## Deployment
 You can access the live deployment of Big Small Tech Blog at the following URL:
-[Big Small Tech Blog - Live Demo]()
+[Big Small Tech Blog - Live Demo](https://big-small-blog-cck37mrz7a-ue.a.run.app/)
 
 ## Getting Started
 1. Clone the repository.
