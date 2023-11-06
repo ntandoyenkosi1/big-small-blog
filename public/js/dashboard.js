@@ -9,3 +9,6 @@ document.querySelectorAll("#delete").forEach((item) => item.addEventListener("cl
         })
         .catch(err=>console.error(err))
 }))
+document.querySelectorAll("#view").forEach((item) => item.addEventListener("click", (e) => {
+    document.location.replace(`/posts/${e.target.dataset.id}`)
+}))

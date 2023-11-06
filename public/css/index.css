@@ -250,3 +250,65 @@ footer a {
 body>div {
     text-align: center;
 }
+.icon{
+    display: none;
+}
+@media screen and (max-width:1296px){
+    .landing-page>.landing-text{
+        width: 66vw;
+    }
+    .landing-page > a{
+        width: 48vw;
+    }
+}
+@media screen and (max-width:826px){
+    .content{
+        margin: 0px;
+    }
+}
+@media screen and (max-width:603px){
+    .login, .signup, .create-post {
+        box-shadow: 0px 0px #ffffff;
+        margin: 0px;
+        text-align: center;
+        padding: 20px 0 40px 0;
+        background-color: white;
+    }
+    form input{
+        width: 65vw;
+    }
+}
+@media screen and (max-width:563px){
+    .user > span:first-child{
+        display: none;
+    }
+}
+@media screen and (max-width:529px){
+    span{
+        font-size: 1pc;
+    }
+    .main-list{
+        display: flex;
+    }
+    .dashboard-list>ul>li{
+        width: auto;
+    }
+}
+@media screen and (max-width:476px){
+    .main-list{
+        display: none;
+    }
+    .icon{
+        display: inline;
+        cursor: pointer;
+    }
+    .main{
+        align-items: center;
+    }
+    .single-post{
+        width: 80vw;
+    }
+    .post{
+        flex-direction: column;
+    }
+}
