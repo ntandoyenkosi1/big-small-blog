@@ -1,30 +1,46 @@
 <div class="signup">
+  <div>
+    <h1>Sign Up</h1>
+    <p>Already signed up? Login <a href="/login"></a></p>
+  </div>
+  <form>
     <div>
-<h1>Sign Up</h1>
-<p>Already signed up? Login <a href="/login"></a></p>
-</div>
-<form>
-    <div>
-        <div>
-            <label>Your name</label>
-            <input maxlength="17" type="text" id="name" placeholder="Enter your name">
-        </div>
+      <div>
+        <label>Your name</label>
+        <input
+          required
+          maxlength="17"
+          type="text"
+          id="name"
+          placeholder="Enter your name"
+        />
+      </div>
     </div>
     <div>
-        <div>
-            <label>Email address</label>
-            <input type="email" id="email" placeholder="email@example.com" />
-        </div>
+      <div>
+        <label>Email address</label>
+        <input
+          required
+          type="email"
+          id="email"
+          placeholder="email@example.com"
+        />
+      </div>
     </div>
     <div>
-        <div>
-            <label>Password</label>
-            <input type="password" id="password" placeholder="Enter 6 characters or more" />
-        </div>
+      <div>
+        <label>Password</label>
+        <input
+          required
+          type="password"
+          id="password"
+          placeholder="Enter 6 characters or more"
+        />
+      </div>
     </div>
     <div>
-        <input type="submit" value="Submit" />
+      <input type="submit" value="Submit" />
     </div>
-</form>
+  </form>
 </div>
 <script src="/js/signup.js"></script>

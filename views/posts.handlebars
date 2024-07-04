@@ -1,34 +1,47 @@
 {{#each posts as |post|}}
-<div class="post-container">
+  <div class="post-container">
     <div class="single-post" id={{post.id}}>
-        <div class="post">
-            <div class="user">
-                <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
-                        class="bi bi-person-circle" viewBox="0 0 16 16">
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                        <path fill-rule="evenodd"
-                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                    </svg>
-                </span>
-                <span>{{post.User.name}}</span>
-            </div>
-            <a href="/posts/{{post.id}}">
-            <div class="content">
-                <h2>{{post.title}}</h2> {{post.commentsCount}} comments
-                <label> posted on {{format_date post.createdAt}}</label>
-            </div>
-</a>
-            <div class="like">
-                {{#if loggedIn}}
-                <span>{{post.likes}}&nbsp;</span>
-                <button id={{post.id}}>Like</button>
-                {{else}}
-                <span>{{post.likes}} likes</span>
-                {{/if}}
-            </div>
+      <div class="post">
+        <div class="user">
+          <span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="50"
+              height="50"
+              fill="currentColor"
+              class="bi bi-person-circle"
+              viewBox="0 0 16 16"
+            >
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+              <path
+                fill-rule="evenodd"
+                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+              />
+            </svg>
+          </span>
+          <span><a
+              href="/users/{{post.User.id}}"
+              id="css-span"
+            >{{post.User.name}}</a></span>
         </div>
+        <a href="/posts/{{post.id}}">
+          <div class="content">
+            <h2>{{post.title}}</h2>
+            {{post.commentsCount}}
+            comments
+            <label> posted on {{format_date post.createdAt}}</label>
+          </div>
+        </a>
+        <div class="like">
+          {{#if loggedIn}}
+            <span>{{post.likes}}&nbsp;</span>
+            <button id={{post.id}}>Like</button>
+          {{else}}
+            <span>{{post.likes}} likes</span>
+          {{/if}}
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 {{/each}}
 <script src="/js/homepage.js"></script>
