@@ -252,6 +252,17 @@ body > div {
 .icon {
   display: none;
 }
+.right-chat {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  background-color: #ededed;
+}
+.left-chat {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 @media screen and (max-width: 1296px) {
   .landing-page > .landing-text {
     width: 66vw;

@@ -1,4 +1,4 @@
-const { Post, Comment, User } = require("../models");
+const { Post, Comment, User, Chat } = require("../models");
 const auth = require("../middleware/auth");
 const router = require("express").Router();
 
@@ -58,13 +58,42 @@ router.get("/logout", async (req, res) => {
     res.redirect("/");
   });
 });
-router.get("/users/:id", async (req, res) => {
+router.get("/chat/:id", async (req, res) => {
   if (req.session.loggedIn) {
     let user = await User.findByPk(req.params.id);
     user = user.get({ plain: true });
-    res.render("user", { user });
+    const senderId = user.id;
+    const receiverId = req.session.user.id;
+    //res.render("user", { user, me: req.session.user.id });
+    Chat.findAll({ where: { User1: senderId, User2: receiverId } })
+      .then((data) => {
+        Chat.findAll({ where: { User1: receiverId, User2: senderId } })
+          .then((data1) => {
+            let chats = [...data, ...data1].sort(
+              (a, b) => a.createdAt - b.createdAt
+            );
+            chats = chats.map((chat) => {
+              chat = chat.get({ plain: true });
+              if (chat.User1 == req.session.user.id) {
+                chat.class = true;
+              } else if (chat.User2 == req.session.user.id) {
+                chat.class = false;
+              }
+              return chat;
+            });
+            res.render("chat", { user, me: req.session.user.id, chats });
+          })
+          .catch((err) => {
+            console.log(err);
+            //res.status(400).json(err);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+        //res.status(400).json(err);
+      });
   } else {
-    res.redirect("/");
+    res.redirect("/login");
   }
 });
 module.exports = router;
