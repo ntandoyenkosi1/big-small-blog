@@ -10,11 +10,11 @@
                 <a href="/posts/{{id}}">
                     <h2>{{title}}</h2>
                     <span>{{likes}} likes</span>
-                    <span class="post-details">Posted on: {{format_date createdAt}} by {{User.name}}</span>
+                    <span class="post-details">Posted on: {{format_date date}} by {{User.name}}</span>
                 </a>
-                <input data-id={{id}} id="view" type="button" value="View" class="view" />
-                <button data-id={{id}} id="edit">Edit</button>
-                <button data-id={{id}} id="delete">Delete</button>
+                <input data-id={{_id}} id="view" type="button" value="View" class="view" />
+                <button data-id={{_id}} id="edit">Edit</button>
+                <button data-id={{_id}} id="delete">Delete</button>
             </div>
         </li>
         {{/each}}

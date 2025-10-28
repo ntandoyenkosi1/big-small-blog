@@ -1,6 +1,6 @@
 {{#each posts as |post|}}
   <div class="post-container">
-    <div class="single-post" id={{post.id}}>
+    <div class="single-post" id={{post._id}}>
       <div class="post">
         <div class="user">
           <span>
@@ -20,22 +20,22 @@
             </svg>
           </span>
           <span title="Chat with {{post.User.name}}"><a
-              href="/chat/{{post.User.id}}"
+              href="/chat/{{post.User._id}}"
               id="css-span"
             >{{post.User.name}}</a></span>
         </div>
-        <a href="/posts/{{post.id}}">
+        <a href="/posts/{{post._id}}">
           <div class="content">
             <h2>{{post.title}}</h2>
             {{post.commentsCount}}
             comments
-            <label> posted on {{format_date post.createdAt}}</label>
+            <label> posted on {{format_date post.date}}</label>
           </div>
         </a>
         <div class="like">
           {{#if loggedIn}}
             <span>{{post.likes}}&nbsp;</span>
-            <button id={{post.id}}>Like</button>
+            <button id={{post._id}}>Like</button>
           {{else}}
             <span>{{post.likes}} likes</span>
           {{/if}}

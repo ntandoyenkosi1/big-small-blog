@@ -1,4 +1,4 @@
-module.exports=[
+export default[
     {
       content: 'Great article! I learned a lot from it.',
       likes: 5,

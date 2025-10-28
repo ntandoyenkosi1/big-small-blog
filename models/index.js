@@ -1,21 +1,11 @@
-const Comment = require("./comment.model");
-const User = require("./user.model");
-const Post = require("./post.model");
-const Chat = require("./chat.model");
-Post.hasMany(Comment);
-Comment.belongsTo(Post, { foreignKey: "PostId" });
+const _Comment = require("./comment");
+const _User = require("./user");
+const _Post = require("./post");
+const _Chat = require("./chat");
 
-User.hasMany(Post);
-Post.belongsTo(User, { foreignKey: "UserId" });
+const Comment = _Comment.default || _Comment;
+const User = _User.default || _User;
+const Post = _Post.default || _Post;
+const Chat = _Chat.default || _Chat;
 
-User.hasMany(Comment);
-Comment.belongsTo(User, { foreignKey: "UserId" });
-
-// User.hasMany(Chat);
-// Chat.belongsToMany(User);
-module.exports = {
-  Comment,
-  User,
-  Post,
-  Chat,
-};
+module.exports = { Comment, User, Post, Chat };

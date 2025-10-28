@@ -24,7 +24,7 @@
                 </svg>
               </span>
               <span><a
-                  href="/users/{{user.id}}"
+                  href="/users/{{user._id}}"
                   id="css-span"
                 >{{user.name}}</a></span>
             </div>
@@ -52,7 +52,7 @@
                 </svg>
               </span>
               <span><a
-                  href="/users/{{user.id}}"
+                  href="/users/{{user._id}}"
                   id="css-span"
                 >{{user.name}}</a></span>
             </div>
@@ -62,7 +62,7 @@
       {{/each}}
     </div>
     <form>
-      <input type="hidden" value="{{user.id}}" />
+      <input type="hidden" value="{{user._id}}" />
       <input type="hidden" value="{{me}}" />
       <input type="text" placeholder="Enter message here" />
       <input type="submit" value="Send" />

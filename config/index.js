@@ -1,12 +1,14 @@
-const Sequelize = require("sequelize");
-
+// const Sequelize = require("sequelize");
+const mongoose =require("mongoose")
 require("dotenv").config();
 /**
+ * //@deprecated
+ * 
  * Uncomment the code below in order to use SQLite.
- * SQLite comes in handy in deployment environments aimed at utilizing less resources
+ * @SQLite comes in handy in deployment environments aimed at utilizing less resources
  * @install SQLite using `npm install sqlite3`
  */
-const sequelize = new Sequelize({ dialect: "sqlite", storage: "blog.db" });
+//const sequelize = new Sequelize({ dialect: "sqlite", storage: "blog.db" });
 // const sequelize = new Sequelize(
 //   process.env.DB_NAMES,
 //   process.env.DB_USER,
@@ -17,5 +19,5 @@ const sequelize = new Sequelize({ dialect: "sqlite", storage: "blog.db" });
 //     port: 3306,
 //   }
 // );
-
-module.exports = sequelize;
+const connection=mongoose.createConnection(process.env.MONGO_URL || "mongodb://127.0.0.1:27017/blog")
+module.exports= connection

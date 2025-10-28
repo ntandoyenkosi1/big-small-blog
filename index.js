@@ -2,12 +2,11 @@ const path = require("path");
 const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
-const helpers = require("./utils/auth");
+const helpers = require("./utils/lib");
 const app = express();
 const PORT = process.env.PORT || 3001;
-
-const sequelize = require("./config");
-const SequelizeStore = require("connect-session-sequelize")(session.Store);
+const mongoose = require('mongoose');
+const MongoStore = require('connect-mongo');
 
 const sess = {
   secret: process.env.SECRET_KEY || "mysecret",
@@ -19,9 +18,7 @@ const sess = {
   },
   resave: false,
   saveUninitialized: true,
-  store: new SequelizeStore({
-    db: sequelize,
-  }),
+  store: MongoStore.create({ mongoUrl: process.env.MONGO_URL || 'mongodb://127.0.0.1:27017/blog' }),
 };
 
 app.use(session(sess));
@@ -38,9 +35,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(require("./controllers"));
-
-sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => {
+mongoose.connect('mongodb://127.0.0.1:27017/blog')
+  .then(() => console.log('Connected!')).then(()=>app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}!`);
-  });
-});
+  }));
+// sequelize.sync({ force: false }).then(() => {
+//   app.listen(PORT, () => {
+//     console.log(`App listening on port ${PORT}!`);
+//   });
+// });

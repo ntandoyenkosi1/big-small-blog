@@ -1,4 +1,4 @@
-module.exports=[
+export default [
     {
       title: 'Introduction to JavaScript',
       content: 'JavaScript is a versatile scripting language...',
