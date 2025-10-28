@@ -53,7 +53,6 @@ router.get("/posts/delete/:id", auth, (req, res) => {
 router.get("/dashboard", auth, async (req, res) => {
   if (!req.session.user) return res.redirect("/login");
   let posts = await Post.find({ UserId: req.session.user.id }).lean();
-  console.log(posts)
   res.render("dashboard", { posts, loggedIn: req.session.loggedIn });
 });
 

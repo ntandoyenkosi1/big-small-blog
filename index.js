@@ -7,7 +7,6 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo');
-
 const sess = {
   secret: process.env.SECRET_KEY || "mysecret",
   cookie: {
@@ -35,12 +34,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(require("./controllers"));
-mongoose.connect('mongodb://127.0.0.1:27017/blog')
-  .then(() => console.log('Connected!')).then(()=>app.listen(PORT, () => {
-    console.log(`App listening on port ${PORT}!`);
-  }));
-// sequelize.sync({ force: false }).then(() => {
-//   app.listen(PORT, () => {
-//     console.log(`App listening on port ${PORT}!`);
-//   });
-// });
+
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}!`);
+})
+
+module.exports = app
